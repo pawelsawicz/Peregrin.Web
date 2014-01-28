@@ -9,7 +9,8 @@
     <meta name="author" content="Jakub Kureń & Paweł Sawicz">
     <link rel="shortcut icon" href="docs-assets/ico/favicon.png">
     <title>Peregrin - aplikacja GPS</title>   
-    <link href="css/bootstrap.css" rel="stylesheet">        
+    <link href="css/bootstrap.css" rel="stylesheet">    
+    <link href="jumbotron.css" rel="stylesheet">
     <script src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0" type="text/javascript"></script>
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -46,9 +47,7 @@
       <div class="container">
         <h1>Prosta aplikacja do trackingu pojazdów MPK Wrocław</h1>
         <p>Ta prosta strona internetowa ma na celu ukazanie działania aplikacji GPS domyślnie zrobionej na Windows Phone. Na mapie wyświetlane zostają pozycje autobusów i tramwajów Wrocławskiego MPK.</p>
-       <ul class="nav nav-tabs">
-  <li class="active"><a href="#Strona główna" data-toggle="tab">Strona główna</a></li>
-  <li><a href="#O nas" data-toggle="tab">O nas</a>
+   
   </li>
   </ul>
 </div>
@@ -57,23 +56,23 @@
       <td align="center" valign="middle">
       <font size="3"><b>Autobusy<br></b></font>
       <div class="btn-group btn-group-sm">
-      <button type="button" class="btn btn-default bus">-A-</button>
-      <button type="button" class="btn btn-default bus"> C </button>
-      <button type="button" class="btn btn-default bus"> D </button>
-      <button type="button" class="btn btn-default bus"> K </button>
-      <button type="button" class="btn btn-default bus"> N </button>
+      <button type="button" class="btn btn-default bus">A</button>
+      <button type="button" class="btn btn-default bus">C</button>
+      <button type="button" class="btn btn-default bus">D</button>
+      <button type="button" class="btn btn-default bus">K</button>
+      <button type="button" class="btn btn-default bus">N</button>
       <button type="button" class="btn btn-default bus">100</button>
       </div>
       </td>
       <td align="center" valign="middle">
       <font size="3"><b>Tramwaje<br></b></font>
       <div class="btn-group btn-group-sm">
-      <button type="button" class="btn btn-default tram">0L </button>
-      <button type="button" class="btn btn-default tram">0P </button>
-      <button type="button" class="btn btn-default tram"> 1 </button>
-      <button type="button" class="btn btn-default tram"> 2 </button>
-      <button type="button" class="btn btn-default tram"> 3 </button>
-      <button type="button" class="btn btn-default tram"> 4 </button>
+      <button type="button" class="btn btn-default tram">0L</button>
+      <button type="button" class="btn btn-default tram">0P</button>
+      <button type="button" class="btn btn-default tram">1</button>
+      <button type="button" class="btn btn-default tram">2</button>
+      <button type="button" class="btn btn-default tram">3</button>
+      <button type="button" class="btn btn-default tram">4</button>
       </div>
       </td>
   </tr>
@@ -90,12 +89,12 @@
       </td>
       <td align="center" valign="middle">
       <div class="btn-group btn-group-sm">
-      <button type="button" class="btn btn-default tram"> 5 </button>
-      <button type="button" class="btn btn-default tram"> 6 </button>
-      <button type="button" class="btn btn-default tram"> 7 </button>
-      <button type="button" class="btn btn-default tram"> 8 </button>
-      <button type="button" class="btn btn-default tram"> 9 </button>
-      <button type="button" class="btn btn-default tram"> 10 </button>
+      <button type="button" class="btn btn-default tram">5</button>
+      <button type="button" class="btn btn-default tram">6</button>
+      <button type="button" class="btn btn-default tram">7</button>
+      <button type="button" class="btn btn-default tram">8</button>
+      <button type="button" class="btn btn-default tram">9</button>
+      <button type="button" class="btn btn-default tram">10</button>
       </td>
   </tr>
   <tr>
@@ -111,12 +110,12 @@
       </td>
       <td align="center" valign="middle">
       <div class="btn-group btn-group-sm">
-      <button type="button" class="btn btn-default tram">11 </button>
-      <button type="button" class="btn btn-default tram">14 </button>
-      <button type="button" class="btn btn-default tram">15 </button>
-      <button type="button" class="btn btn-default tram">17 </button>
-      <button type="button" class="btn btn-default tram">20 </button>
-      <button type="button" class="btn btn-default tram">23 </button>
+      <button type="button" class="btn btn-default tram">11</button>
+      <button type="button" class="btn btn-default tram">14</button>
+      <button type="button" class="btn btn-default tram">15</button>
+      <button type="button" class="btn btn-default tram">17</button>
+      <button type="button" class="btn btn-default tram">20</button>
+      <button type="button" class="btn btn-default tram">23</button>
       </div>
       </td>
   </tr>
@@ -133,7 +132,7 @@
       </td>
       <td align="center" valign="middle">
       <div class="btn-group btn-group-sm">
-      <button type="button" class="btn btn-default tram">24 </button>
+      <button type="button" class="btn btn-default tram">24</button>
       <button type="button" class="btn btn-default tram">31 Plus</button>
       <button type="button" class="btn btn-default tram">32 Plus</button>
       <button type="button" class="btn btn-default tram">33 Plus</button>
@@ -229,26 +228,15 @@
     <script>
       var peregrinCore = function(){
         
-        var map;
-
         var init = function(){
-            map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+          var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
             credentials: 'AqV3Ief4e3f6p6dTFSSenQgf_DcNT3JahUO20HWu1mMKWqtURMY_ABW3mpDDIYZ0',
             center: new Microsoft.Maps.Location(51.108480, 17.039181), zoom: 13
           });
         };
 
-
-
-        var pinPushpin = function(){
-            var center = map.getCenter();
-            var pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(51.108480, 17.039181));
-            map.entities.push(pin);
-        };
-
         return{
-          Init : init,
-          pinPushpin : pinPushpin
+          Init : init
         };
 
       }();
