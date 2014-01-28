@@ -229,7 +229,8 @@
     <script>
       var peregrinCore = function(){
         
-        var map;
+        var map;         
+        var busList = {bus:{},tram:{},train:{}};
 
         var init = function(){
             map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
@@ -238,7 +239,21 @@
           });
         };
 
+        var getData = function(){       
+          var selectedVehicles = "busList[bus][]:122";          
 
+          $.ajax({
+            url:'http://pasazer.mpk.wroc.pl/position.php',
+            type:'post',
+            data: {"busList[bus][]": "122"},            
+            crossDomain:true,            
+            headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                },
+            success: function() { alert("Success"); },
+            error: function() { alert("Fail"); }
+          });
+        };
 
         var pinPushpin = function(){
             var center = map.getCenter();
@@ -248,7 +263,8 @@
 
         return{
           Init : init,
-          pinPushpin : pinPushpin
+          pinPushpin : pinPushpin,
+          getData : getData
         };
 
       }();
