@@ -9,8 +9,7 @@
     <meta name="author" content="Jakub Kureń & Paweł Sawicz">
     <link rel="shortcut icon" href="docs-assets/ico/favicon.png">
     <title>Peregrin - aplikacja GPS</title>   
-    <link href="css/bootstrap.css" rel="stylesheet">    
-    <link href="jumbotron.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">        
     <script src="http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0" type="text/javascript"></script>
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="../../docs-assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -54,11 +53,6 @@
   <div class="tab-pane fade in active" id="home">blah blah</div>
   </li>
   </ul>
-<script>
- $(function () {
-    $('#myTab a:last').tab('show')
-  })
-</script>
 </div>
 <table width="45%">
   <tr>
@@ -237,15 +231,30 @@
     <script>
       var peregrinCore = function(){
         
+        var map;
+
         var init = function(){
-          var map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
+            map = new Microsoft.Maps.Map(document.getElementById('myMap'), {
             credentials: 'AqV3Ief4e3f6p6dTFSSenQgf_DcNT3JahUO20HWu1mMKWqtURMY_ABW3mpDDIYZ0',
             center: new Microsoft.Maps.Location(51.108480, 17.039181), zoom: 13
           });
         };
 
+
+
+        var pinPushpin = function(){
+            var center = map.getCenter();
+            var pin = new Microsoft.Maps.Pushpin(center, {
+              icon: 'images/bus.jpg', 
+              width:50,
+              height:50,
+              draggable:false 
+            });
+        };
+
         return{
-          Init : init
+          Init : init,
+          pinPushpin : pinPushpin
         };
 
       }();
